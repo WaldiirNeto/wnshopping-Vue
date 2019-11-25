@@ -5,7 +5,7 @@
     <h1>{{msg}}</h1>
     <div>
       <b-container class="bv-example-row">
-        <form @submit.prevent="submit">
+        <form @submit.prevent= "Form">
           <b-row>
             <b-col></b-col>
             <b-col>
@@ -62,19 +62,24 @@ export default {
 
   validations: {
     form: {
-      name: { required },
-      email: { required }
+      user: { required },
+      password: { required }
     }
   },
 
   methods: {
-    submit() {
-        console.log(this.$v.form.$touch());
-      this.$v.form.$touch();
-      if (this.$v.form.$error) return;
-      // to form submit after this
-      alert("Form submitted");
+    // pega o formulario
+      Form: function() {
+      console.log({ name: this.form.user, email: this.form.password });
+      alert("Submeteu!");
     }
+    // submit() {
+    //     console.log(this.$v.form.value);
+    //   this.$v.form.$touch();
+    //   if (this.$v.form.$error) return;
+    //   // to form submit after this
+    //   alert("Form submitted");
+    // }
   }
 };
 </script>
